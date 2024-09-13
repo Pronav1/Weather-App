@@ -37,6 +37,7 @@ import coil.compose.AsyncImage
 import com.pranavpandey.wheatherapp.api.NetworkResponse
 import com.pranavpandey.wheatherapp.api.WeatherModel
 import com.pranavpandey.wheatherapp.viewModel.WeatherViewModel
+import kotlinx.coroutines.coroutineScope
 
 @Composable
 fun WeatherPage(viewModel: WeatherViewModel){
@@ -48,6 +49,7 @@ fun WeatherPage(viewModel: WeatherViewModel){
     Column(
         modifier = Modifier.padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
+
     ){
         Row(modifier = Modifier
             .padding(8.dp)
@@ -63,8 +65,10 @@ fun WeatherPage(viewModel: WeatherViewModel){
         )
             IconButton(
                 onClick = {
-                    viewModel.getData(city)
-                    keyboardController?.hide()
+
+                        viewModel.getData(city)
+                        keyboardController?.hide()
+
                 },
             ) {
                 Icon(
@@ -84,7 +88,7 @@ fun WeatherPage(viewModel: WeatherViewModel){
             is NetworkResponse.Success -> {
                 WeatherDetails(data = result.data)
             }
-            null -> TODO()
+            null -> {}
         }
 
     }

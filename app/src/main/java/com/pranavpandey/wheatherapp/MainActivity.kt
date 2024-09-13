@@ -5,15 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.ViewModel
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import com.pranavpandey.wheatherapp.ui.theme.WheatherAppTheme
 import com.pranavpandey.wheatherapp.view.WeatherPage
@@ -28,8 +25,10 @@ class MainActivity : ComponentActivity() {
             WheatherAppTheme {
 
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize().verticalScroll(enabled = true, state = rememberScrollState()),
+                    color = MaterialTheme.colorScheme.background,
+                    contentColor = Color.Blue,
+
 
                 ){
                     WeatherPage(weatherViewModel)
